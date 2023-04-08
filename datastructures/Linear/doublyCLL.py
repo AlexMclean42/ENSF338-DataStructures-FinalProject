@@ -1,14 +1,11 @@
-class DNode:
-    def __init__(self, data):
-        self.data = data
-        self.prev = None
-        self.next = None
+from DNode import DNode
+from doublyLL import DoublyLL
 
-class doublyCLL:
+class doublyCLL(DoublyLL):
     def __init__(self):
+        super().__init__()
         self.head = None
         self.tail = None
-        self.size = 0
     
     def insert_head(self, node):
         if not self.head:
@@ -133,8 +130,6 @@ class doublyCLL:
             self.size -= 1
 
 
-
-
 def main():
     # Create nodes
     node1 = DNode(1)
@@ -143,9 +138,9 @@ def main():
 
     # Create circular linked list
     clist = doublyCLL()
-    clist.insert_head(node1)
-    clist.insert_tail(node2)
-    clist.insert_tail(node3)
+    clist.insert(node1, 0)
+    clist.insert(node2, 1)
+    clist.insert(node3, 2)
 
     # Print circular linked list
     print("Printing initial circular linked list:")

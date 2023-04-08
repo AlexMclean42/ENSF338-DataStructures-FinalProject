@@ -1,8 +1,4 @@
-
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+from SNode import Node
 
 class SinglyLL:
     def __init__(self, head=None):
@@ -15,7 +11,7 @@ class SinglyLL:
                 current = current.next
             self.tail = current
             self.size = 1
-    
+
     def insert_head(self, node):
         if not self.head:
             self.head = node
@@ -33,7 +29,7 @@ class SinglyLL:
             self.tail.next = node
             self.tail = node
         self.size += 1
-    
+
     def insert(self, node, position):
         if position == 0:
             self.insert_head(node)
@@ -46,7 +42,7 @@ class SinglyLL:
             node.next = current.next
             current.next = node
             self.size += 1
-    
+
     def sorted_insert(self, node):
         if not self.head:
             self.head = node
@@ -73,7 +69,7 @@ class SinglyLL:
         return None
 
 
-    
+
     def delete_head(self):
         if not self.head:
             return None
@@ -84,7 +80,8 @@ class SinglyLL:
         if not self.head:
             self.tail = None
         return temp
-    
+
+
     def delete_tail(self):
         if not self.tail:
             return None
@@ -98,12 +95,11 @@ class SinglyLL:
         if not self.tail:
             self.head = None
         return temp
-    
+
+
     def delete_node(self, node):
         if not node or not self.head:
             return None
-
-        # Delete the head node
         if self.head.data == node.data:
             return self.delete_head()
 
@@ -114,16 +110,10 @@ class SinglyLL:
                 break
             prev = current
             current = current.next
-
-        # Node not found in linked list
         if not current:
             return None
-
-        # Delete the tail node
         if current == self.tail:
             return self.delete_tail()
-
-        # Delete a node in the middle
         prev.next = current.next
         current.next = None
         self.size -= 1
@@ -135,18 +125,12 @@ class SinglyLL:
     def sort(self):
         if not self.head:
             return
-        
-        # Initialize the new list with the first node
         new_head = self.head
         new_tail = self.head
         current = self.head.next
         new_head.next = None
-        
-        # Traverse the original list
         while current:
             next_node = current.next
-            
-            # Insert the current node into the new list
             if current.data <= new_head.data:
                 current.next = new_head
                 new_head = current
@@ -162,8 +146,6 @@ class SinglyLL:
                 search.next = current
             
             current = next_node
-        
-        # Update the head and tail of the list
         self.head = new_head
         self.tail = new_tail
 
@@ -173,25 +155,25 @@ class SinglyLL:
         self.tail = None
         self.size = 0
 
+
     def print(self):
         if not self.head:
             print("List is empty.")
             return
         print("List length:", self.size)
-        print("Sorted:", self.is_sorted())
+        sorted_status = True
+        current = self.head
+        while current and current.next:
+            if current.data > current.next.data:
+                sorted_status = False
+                break
+            current = current.next
+        print("Sorted:", sorted_status)
         print("List content:")
         current = self.head
         while current:
             print(current.data)
             current = current.next
-
-    def is_sorted(self):
-        current = self.head
-        while current and current.next:
-            if current.data > current.next.data:
-                return False
-            current = current.next
-        return True
 
 
 
