@@ -71,7 +71,7 @@ class BST:
                 valOrNode.parent = parent
 
 
-    def Delete(self, val):
+    def Delete(self, val):         #Make delete more than one occurance
         parent = None
         current = self.root
 
