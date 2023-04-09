@@ -14,6 +14,8 @@ class TNode:
         else:
             raise TypeError("Parent must be a TNode object.")
         self.balance = balance
+        self.height = 1  # added height attribute
+
 
     def set_data(self, data):
         self.data = data
@@ -75,3 +77,4 @@ class TNode:
         else:
             print("Right child: None")
         print("Balance:", self.balance)
+

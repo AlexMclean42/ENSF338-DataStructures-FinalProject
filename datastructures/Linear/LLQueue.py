@@ -4,52 +4,74 @@ from singlyLL import SinglyLL
 
 
 
-
 class LLQueue(SinglyLL):
     def __init__(self):
         super().__init__()
 
-    def insert_head(self, node):
+    def InsertHead(self, node):
         pass
 
-    def insert_tail(self, node):
-        super().insert_tail(node)
+    def InsertTail(self, node):
+        super().InsertTail(node)
 
     def insert(self, node, position):
         if position == 0:
-            self.insert_head(node)
+            self.InsertHead(node)
         else:
-            super().insert(node, position)
+            super().Insert(node, position)
 
-    def sorted_insert(self, node):
-        super().insert_tail(node)
+    def SortedInsert(self, node):
+        super().InsertTail(node)
 
-    def search(self, node):
-        return super().search(node)
+    def Search(self, node):
+        return super().Search(node)
 
-    def delete_head(self):
-        return super().delete_head()
+    def DeleteHead(self):
+        return super().DeleteHead()
 
-    def delete_tail(self):
-        return super().delete_tail()
+    def DeleteTail(self):
+        return super().DeleteTail()
 
-    def delete_node(self, node):
-        return super().delete_node(node)
+    def Delete(self, node):
+        return super().Delete(node)
 
-    def sort(self):
-        super().sort()
+    def Sort(self):
+        super().Sort()
 
-    def clear(self):
-        super().clear()
+    def is_sorted(self):
+        if not self.head:
+            return True
+        current = self.head
+        while current.next:
+            if current.data > current.next.data:
+                return False
+            current = current.next
+        
+        return True
+        
+    def length(self):
+        return self.size
+
+    def Clear(self):
+        super().Clear()
 
     def enqueue(self, node):
-        self.insert_tail(node)
+        self.InsertTail(node)
 
     def dequeue(self):
-        return self.delete_head()
+        return self.DeleteHead()
     
-    def print_queue(self):
+    def Print(self):
+        # Print the list length
+        print("List length:", self.length())
+
+        # Check if the list is sorted
+        sorted_status = "sorted" if self.is_sorted() else "not sorted"
+        print("Sorted status:", sorted_status)
+
+        # Print the list content
         current = self.head
+        print("List content:", end=" ")
         while current is not None:
             print(current.data, end=" ")
             current = current.next
@@ -66,7 +88,7 @@ def main():
 
     # Print the queue
     print("Queue contents:", end=" ")
-    queue.print_queue()
+    queue.Print()
 
     # Dequeue some nodes from the queue
     print("Dequeuing", queue.dequeue().data)
@@ -74,7 +96,7 @@ def main():
 
     # Print the queue again
     print("Queue contents:", end=" ")
-    queue.print_queue()
+    queue.Print()
 
     # Add some more nodes to the queue
     queue.enqueue(Node(4))
@@ -82,7 +104,7 @@ def main():
 
     # Print the queue once more
     print("Queue contents:", end=" ")
-    queue.print_queue()
+    queue.Print()
 
 if __name__ == '__main__':
     main()

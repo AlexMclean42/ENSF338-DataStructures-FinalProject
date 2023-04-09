@@ -13,7 +13,7 @@ class DoublyLL(SinglyLL):
             self.tail = current
             self.size = 1
 
-    def insert_head(self, node):
+    def InsertHead(self, node):
         if not self.head:
             self.head = node
             self.tail = node
@@ -23,7 +23,7 @@ class DoublyLL(SinglyLL):
             self.head = node
         self.size += 1
 
-    def insert_tail(self, node):
+    def InsertTail(self, node):
         if not self.tail:
             self.head = node
             self.tail = node
@@ -33,11 +33,11 @@ class DoublyLL(SinglyLL):
             self.tail = node
         self.size += 1
 
-    def insert(self, node, position):
+    def Insert(self, node, position):
         if position == 0:
-            self.insert_head(node)
+            self.InsertHead(node)
         elif position >= self.size:
-            self.insert_tail(node)
+            self.InsertTail(node)
         else:
             current = self.head
             for i in range(1, position):
@@ -48,7 +48,7 @@ class DoublyLL(SinglyLL):
             node.prev = current
             self.size += 1
 
-    def delete_head(self):
+    def DeleteHead(self):
         if not self.head:
             return None
         temp = self.head
@@ -61,7 +61,7 @@ class DoublyLL(SinglyLL):
             self.tail = None
         return temp
 
-    def delete_tail(self):
+    def DeleteTail(self):
         if not self.tail:
             return None
         temp = self.tail
@@ -74,14 +74,11 @@ class DoublyLL(SinglyLL):
             self.head = None
         return temp
 
-    def delete_node(self, node):
+    def Delete(self, node):
         if not node or not self.head:
             return None
-
-        # Delete the head node
         if self.head.data == node.data:
-            return self.delete_head()
-
+            return self.DeleteHead()
         current = self.head
         prev = None
         while current:
@@ -89,16 +86,10 @@ class DoublyLL(SinglyLL):
                 break
             prev = current
             current = current.next
-
-        # Node not found in linked list
         if not current:
             return None
-
-        # Delete the tail node
         if current == self.tail:
-            return self.delete_tail()
-
-        # Delete a node in the middle
+            return self.DeleteTail()
         if prev:
             prev.next = current.next
         else:
@@ -107,7 +98,7 @@ class DoublyLL(SinglyLL):
         self.size -= 1
         return current
     
-    def sort(self):
+    def Sort(self):
         if not self.head:
             return
         new_head = self.head
@@ -134,8 +125,7 @@ class DoublyLL(SinglyLL):
 
         self.head = new_head
         self.tail = new_tail
-
-
+    
 
 # TESTING THE DLL:
 def main():
@@ -148,31 +138,31 @@ def main():
 
     # Create a doubly linked list and insert some nodes
     dllist = DoublyLL()
-    dllist.insert_head(node2)
-    dllist.insert_head(node1)
-    dllist.insert_tail(node3)
-    dllist.insert_head(node4)
+    dllist.InsertHead(node2)
+    dllist.InsertHead(node1)
+    dllist.InsertTail(node3)
+    dllist.InsertHead(node4)
 
 
     # Print the list
-    dllist.print()
+    dllist.Print()
     
     # Sort the list
 
-    dllist.sort()
+    dllist.Sort()
 
     # Test the search function
-    result = dllist.search(DNode(2))
+    result = dllist.Search(DNode(2))
     if result:
         print("Node found:", result.data)
     else:
         print("Node not found")
     
-    dllist.print()
+    dllist.Print()
 
     # Test the delete function
-    dllist.delete_node(DNode(2))
-    dllist.print()
+    dllist.Delete(DNode(2))
+    dllist.Print()
 
 if __name__ == '__main__':
     main()

@@ -6,10 +6,10 @@ class LLStack(SinglyLL):
         super().__init__(head)
         
     def push(self, node):
-        self.insert_head(node)
+        self.InsertHead(node)
     
     def pop(self):
-        return self.delete_head()
+        return self.DeleteHead()
     
     def peek(self):
         if self.head:
@@ -20,12 +20,30 @@ class LLStack(SinglyLL):
         return self.head is None
     
     def clear(self):
-        super().clear()
+        super().Clear()
     
     def print(self):
         if not self.head:
             print("Stack is empty.")
             return
+        # Count the number of nodes in the list
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next
+        # Check if the list is sorted
+        is_sorted = True
+        current = self.head
+        while current.next:
+            if current.data > current.next.data:
+                is_sorted = False
+                break
+            current = current.next
+        # Print the list information
+        print("List length:", count)
+        print("Sorted status:", "Yes" if is_sorted else "No")
+        print("List content:")
         current = self.head
         while current:
             print(current.data)

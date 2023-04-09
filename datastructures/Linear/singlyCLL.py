@@ -1,4 +1,3 @@
-
 from SNode import Node
 from singlyLL import SinglyLL
 
@@ -13,13 +12,10 @@ class CircularSinglyLL(SinglyLL):
             super().__init__()
 
 
-    def __len__(self):
-        return self.size
-
     def is_empty(self):
         return self.size == 0
 
-    def insert_head(self, node):
+    def InsertHead(self, node):
         if self.is_empty():
             self.head = node
             self.tail = node
@@ -31,9 +27,9 @@ class CircularSinglyLL(SinglyLL):
         self.size += 1
 
     
-    def insert_tail(self, node):
+    def InsertTail(self, node):
         if self.is_empty():
-            self.insert_head(node)
+            self.InsertHead(node)
         else:
             node.next = self.head
             self.tail.next = node
@@ -41,13 +37,13 @@ class CircularSinglyLL(SinglyLL):
             self.size += 1
 
     
-    def insert(self, node, position):
+    def Insert(self, node, position):
         if position < 0 or position > self.size:
             raise ValueError("Invalid position")
         elif position == 0:
-            self.insert_head(node)
+            self.InsertHead(node)
         elif position == self.size:
-            self.insert_tail(node)
+            self.InsertTail(node)
         else:
             current = self.head
             for i in range(position - 1):
@@ -56,7 +52,7 @@ class CircularSinglyLL(SinglyLL):
             current.next = node
             self.size += 1
     
-    def delete_head(self):
+    def DeleteHead(self):
         if self.is_empty():
             return None
         temp = self.head
@@ -69,7 +65,7 @@ class CircularSinglyLL(SinglyLL):
         return temp
 
     
-    def delete_tail(self):
+    def DeleteTail(self):
         if self.is_empty():
             return None
         current = self.head
@@ -84,13 +80,13 @@ class CircularSinglyLL(SinglyLL):
         return temp
 
     
-    def delete(self, position):
+    def Delete(self, position):
         if position < 0 or position >= self.size:
             raise ValueError("Invalid position")
         elif position == 0:
-            return self.delete_head()
+            return self.DeleteHead()
         elif position == self.size - 1:
-            return self.delete_tail()
+            return self.DeleteTail()
         else:
             current = self.head
             for i in range(position - 1):
@@ -101,7 +97,7 @@ class CircularSinglyLL(SinglyLL):
             self.size -= 1
             return temp
     
-    def search(self, node):
+    def Search(self, node):
         if self.is_empty():
             return None
         current = self.head
@@ -113,14 +109,13 @@ class CircularSinglyLL(SinglyLL):
                 break
         return None
 
-
     def length(self):
         return self.size
 
     
-    def clear(self):
+    def Clear(self):
         while not self.is_empty():
-            self.delete_head()
+            self.DeleteHead()
 
         
     def is_sorted(self):
@@ -133,10 +128,9 @@ class CircularSinglyLL(SinglyLL):
             current = current.next
         return True
     
-    def sort(self):
+    def Sort(self):
         if not self.head:
             return
-
         current = self.head
         while current.next != self.head:
             index = current.next
@@ -147,13 +141,19 @@ class CircularSinglyLL(SinglyLL):
             current = current.next
 
 
-    def print(self):
+    def Print(self):
+        if self.is_empty():
+            print("The list is empty.")
+            return
+        print("List length:", self.length())
+        print("Sorted:", "Yes" if self.is_sorted() else "No")
+        print("List content:", end=" ")
         current = self.head
         for i in range(self.size):
             print(current.data, end=" ")
             current = current.next
         print()
-        
+
 
 
 # TESTING THE CLL:
@@ -163,51 +163,51 @@ def main():
     node2 = Node(2)
     node3 = Node(3)
     cll = CircularSinglyLL()
-    cll.insert_tail(node1)
-    cll.insert_tail(node2)
-    cll.insert_head(node3)
+    cll.InsertTail(node1)
+    cll.InsertTail(node2)
+    cll.InsertHead(node3)
     
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
     # Delete the head and tail nodes, and then print the list again
-    cll.delete_head()
-    cll.delete_tail()
+    cll.DeleteHead()
+    cll.DeleteTail()
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
     # Insert a new node at position 1, and then print the list again
     node4 = Node(4)
-    cll.insert(node4, 1)
+    cll.Insert(node4, 1)
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
     # Sort the list and print it again
-    cll.sort()
+    cll.Sort()
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
     # Clear the list and print it again
-    cll.clear()
+    cll.Clear()
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
     # Test the search function
-    cll.insert_tail(node1)
-    cll.insert_tail(node2)
-    cll.insert_tail(node3)
+    cll.InsertTail(node1)
+    cll.InsertTail(node2)
+    cll.InsertTail(node3)
     node = Node(2)
-    result = cll.search(node)
+    result = cll.Search(node)
     if result:
         print("Node found:", result.data)
     else:
@@ -215,7 +215,7 @@ def main():
     print("List length:", cll.length())
     print("Sorted:", cll.is_sorted())
     print("List content:")
-    cll.print()
+    cll.Print()
 
 
 if __name__ == '__main__':
