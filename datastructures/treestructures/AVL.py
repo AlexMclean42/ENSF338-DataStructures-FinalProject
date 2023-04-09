@@ -2,8 +2,6 @@ from TNode import TNode
 from BST import BST
 
 
-
-
 class AVL(BST):
     def __init__(self, root=None):
         if root is None:
@@ -11,9 +9,23 @@ class AVL(BST):
         elif isinstance(root, int):
             self.root = TNode(root)
         elif isinstance(root, TNode):
-            # self.root = root
             self.root = self.balance(root)
 
+    def get_root(self):
+        return self.root
+
+    def set_root(self, root):
+        if self.root is None:
+            if root is None:
+                self.root = None
+            elif isinstance(root, TNode):
+                self.root = self.balance(root)
+            elif isinstance(root, int):
+                self.root = TNode(data=root)
+            else:
+                raise TypeError("Root must be an integer or TNode object.")
+
+    #finish?
 
     def balance(self, node):
         """
@@ -116,51 +128,32 @@ class AVL(BST):
         return new_root
 
 
+    def Insert(self, val):
+        super().Insert(val)
+        self.balance(self.root)
 
+    def Delete(self, val):
+        super().Delete(val)
+        self.balance(self.root)
 
-
-    # def Insert(self, val):
-    #     node = super().Insert(val)
-    #     # self.balance_AVL(node)
-
-    #     node = TNode(val)
-    #     if self.root is None:
-    #         self.root = node
-    #         return
-    #     current = self.root
-    #     while current is not None:
-    #         if val < current.data:
-    #             if current.left is None:
-    #                 current.left = node
-    #                 node.parent = current
-    #                 break
-    #             current = current.left
-    #         else:
-    #             if current.right is None:
-    #                 current.right = node
-    #                 node.parent = current
-    #                 break
-    #             current = current.right
-    #     # balance the tree from the parent of the inserted node up to the root
-    #     while node is not None:
-    #         node = self.balance_AVL(node.parent)
 
 
 def main():                       #Test main delete before submission
     #node = TNode(1, TNode(2, TNode(4), TNode(5)), TNode(3, TNode(6), TNode(7)))
-    #node = TNode(3, L=TNode(2, L=TNode(1, L=TNode(0))))
+    node = TNode(3)
     ahh = BST()
     # ahh.Insert(4)
     # ahh.Insert(2)
     # ahh.Insert(3)
     ahh.Insert(1)
-    ahh.Insert(6)
+    ahh.Insert(5)
     ahh.Insert(7)
     ahh.Insert(9)
     
 
 
-    tree = AVL(ahh.root)
+    tree = AVL()
+    tree.set_root(ahh.root)
 
     # Print the contents of the tree in ascending order
     print("Contents of tree in ascending order:")
@@ -171,15 +164,43 @@ def main():                       #Test main delete before submission
     print("Contents of tree in Breadth-First order:")
     tree.printBF()
 
-    a = tree.search(1)
-    a.print_node()
-    a = tree.search(6)
-    a.print_node()
-    a = tree.search(7)
-    a.print_node()
-    a = tree.search(9)
-    a.print_node()
 
+    tree.Insert(6)
+    tree.Insert(8)
+    tree.Insert(3)
+    tree.Insert(4)
+    tree.Insert(0) 
+    
+
+    print("Contents of tree in ascending order:")
+    tree.printInOrder()
+    print()
+
+    # Print the contents of the tree in Breadth-First order
+    print("Contents of tree in Breadth-First order:")
+    tree.printBF()
+
+    # a = tree.search(1)
+    # a.print_node()
+    # a = tree.search(6)
+    # a.print_node()
+    # a = tree.search(4)
+    # a.print_node()
+    # a = tree.search(9)
+    # a.print_node()
+    # a = tree.search(0)
+    # a.print_node()
+
+    #tree.Delete(7) dropped stuff on left
+
+
+    print("Contents of tree in ascending order:")
+    tree.printInOrder()
+    print()
+
+    # Print the contents of the tree in Breadth-First order
+    print("Contents of tree in Breadth-First order:")
+    tree.printBF()
 
 
 if __name__ == '__main__':
