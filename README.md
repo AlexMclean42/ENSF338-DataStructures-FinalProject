@@ -1,8 +1,8 @@
-# ENSF 338 - Assignment 2
+# DataStructures Final Project
 ## ENSF 338 L02 - 38
 ### Alex McLean, 30147485, <a href="mailto:alexander.mclean@ucalgary.ca">alexander.mclean@ucalgary.ca</a>
 ### Kaylyn Tanton, 30143129, <a href="mailto:kaylyn.tanton@ucalgary.ca">kaylyn.tanton@ucalgary.ca</a>
-## February 12, 2023
+## April 10, 2023
 
 <table>
 <thead>
@@ -13,11 +13,11 @@
 </thead>
 <tbody>
     <tr>
-	<td>Linear</td>
+	<td>Module 1 (Linear)</td>
 	<td>Alex</td>
     </tr>
     <tr>
-	<td>Trees</td>
+	<td>Module 2 (Trees)</td>
 	<td>Kaylyn</td>
     </tr>
 </tbody>
