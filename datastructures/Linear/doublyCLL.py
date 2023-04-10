@@ -158,47 +158,85 @@ class doublyCLL(DoublyLL):
             current = current.next
         print()
 
+
+# TESTING THE DOUBLYCLL:
 def main():
     # Create nodes
     node1 = DNode(1)
     node2 = DNode(2)
     node3 = DNode(3)
+    node4 = DNode(4)
+    node5 = DNode(5)
 
     # Create circular linked list
     clist = doublyCLL()
     print("Creating new circular linked list:")
     clist.Print()
-    clist.Insert(node1, 0)
-    clist.Insert(node2, 1)
-    clist.Insert(node3, 2)
 
-    # Print circular linked list
-    print("\nPrinting initial circular linked list:")
+    # Test is_empty method
+    print("\nTesting is_empty method:")
+    print("List is empty:", clist.is_empty())
+
+    # Test InsertHead method
+    print("\nTesting InsertHead method:")
+    clist.InsertHead(node1)
     clist.Print()
 
-    # Demonstrate search functionality
-    print("\nSearching for node with data value 2:")
-    result = clist.Search(DNode(2))
+    # Test InsertTail method
+    print("\nTesting InsertTail method:")
+    clist.InsertTail(node2)
+    clist.Print()
+
+    # Test Insert method
+    print("\nTesting Insert method:")
+    clist.Insert(node3, 1)
+    clist.Print()
+
+    # Test SortedInsert method
+    print("\nTesting SortedInsert method:")
+    clist.SortedInsert(node4)
+    clist.Print()
+
+    # Test is_sorted method
+    print("\nTesting is_sorted method:")
+    print("List is sorted:", clist.is_sorted())
+
+    # Test length method
+    print("\nTesting length method:")
+    print("List length:", clist.length())
+
+    # Test Search method
+    print("\nTesting Search method:")
+    result = clist.Search(node3)
     if result:
-        print("Node found with data value 2")
+        print("Node found with data value 3")
     else:
-        print("Node not found with data value 2")
+        print("Node not found with data value 3")
 
-    # Demonstrate SortedInsert functionality
-    print("\nInserting new node with data value 2.5 in sorted order:")
-    clist.SortedInsert(DNode(2.5))
+    # Test DeleteHead method
+    print("\nTesting DeleteHead method:")
+    clist.DeleteHead()
     clist.Print()
 
-    # Demonstrate Delete functionality
-    print("\nDeleting node with data value 1:")
-    clist.Delete(node1)
+    # Test DeleteTail method
+    print("\nTesting DeleteTail method:")
+    clist.DeleteTail()
     clist.Print()
-        
-    # Demonstrate insert functionality
-    print("\nInserting new node with data value 0 at position 0:")
-    clist.Insert(DNode(0), 0)
+
+    # Test Delete method
+    print("\nTesting Delete method:")
+    clist.Delete(node3)
     clist.Print()
-    
+
+    # Test edge cases
+    print("\nTesting edge cases:")
+    clist.InsertHead(node5)
+    clist.InsertTail(node1)
+    clist.DeleteHead()
+    clist.DeleteTail()
+    clist.Delete(node2)
+    clist.Print()
+
 if __name__ == '__main__':
     main()
     

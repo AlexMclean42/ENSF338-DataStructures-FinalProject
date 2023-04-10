@@ -127,42 +127,65 @@ class DoublyLL(SinglyLL):
         self.tail = new_tail
     
 
-# TESTING THE DLL:
+# TESTING THE DOUBLYLL:
 def main():
     # Create some nodes
     node1 = DNode(1)
     node2 = DNode(2)
     node3 = DNode(3)
     node4 = DNode(4)
-
-
-    # Create a doubly linked list and insert some nodes
+    
+    # Create an empty DoublyLL object
     dllist = DoublyLL()
+    
+    # Test InsertHead function
     dllist.InsertHead(node2)
     dllist.InsertHead(node1)
-    dllist.InsertTail(node3)
-    dllist.InsertHead(node4)
-
-
-    # Print the list
-    dllist.Print()
+    dllist.Print() # should print 1 <-> 2
     
-    # Sort the list
-
+    # Test InsertTail function
+    dllist.InsertTail(node3)
+    dllist.Print() # should print 1 <-> 2 <-> 3
+    
+    # Test Insert function
+    dllist.Insert(node4, 1)
+    dllist.Print() # should print 1 <-> 4 <-> 2 <-> 3
+    
+    # Test DeleteHead function
+    dllist.DeleteHead()
+    dllist.Print() # should print 4 <-> 2 <-> 3
+    
+    # Test DeleteTail function
+    dllist.DeleteTail()
+    dllist.Print() # should print 4 <-> 2
+    
+    # Test Delete function
+    dllist.Delete(node2)
+    dllist.Print() # should print 4
+    
+    # Test Sort function
+    node5 = DNode(5)
+    node6 = DNode(6)
+    node7 = DNode(7)
+    dllist.InsertHead(node6)
+    dllist.InsertTail(node5)
+    dllist.InsertTail(node7)
+    dllist.Print() # should print 6 <-> 4 <-> 5 <-> 7
     dllist.Sort()
-
-    # Test the search function
-    result = dllist.Search(DNode(2))
+    dllist.Print() # should print 4 <-> 5 <-> 6 <-> 7
+    
+    # Test Search function
+    result = dllist.Search(DNode(6))
+    if result:
+        print("Node found:", result.data) # should print Node found: 6
+    else:
+        print("Node not found")
+        
+    result = dllist.Search(DNode(8))
     if result:
         print("Node found:", result.data)
     else:
-        print("Node not found")
-    
-    dllist.Print()
-
-    # Test the delete function
-    dllist.Delete(DNode(2))
-    dllist.Print()
+        print("Node not found") # should print Node not found
 
 if __name__ == '__main__':
     main()

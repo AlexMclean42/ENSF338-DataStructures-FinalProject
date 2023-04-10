@@ -1,5 +1,0 @@
-{
-  "python.testing.pytestArgs": ["datastructures"],
-  "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
-}
