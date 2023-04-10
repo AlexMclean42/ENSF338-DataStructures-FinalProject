@@ -1,10 +1,13 @@
 # ENSF 338 – Practical Data Structures and Algorithms
 
-
-
+<p align="center">
 | Attempt | #1    | #2    |
 | :---:   | :---: | :---: |
 | Seconds | 301   | 283   |
+
+</p>
+
+
 
 ### Winter 2023
 
