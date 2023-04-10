@@ -1,5 +1,6 @@
 from SNode import Node
 
+
 class SinglyLL:
     def __init__(self, head=None):
         self.head = head
@@ -177,49 +178,58 @@ class SinglyLL:
 
 
 
-# TESTING THE LL:
+# TESTING THE SINGLYLL:
 def main():
-    # Create a singly linked list
+    # create a singly linked list
     sll = SinglyLL()
 
-    # Insert nodes at head and tail
+    # insert nodes at head and tail
     sll.InsertHead(Node(2))
-    sll.InsertTail(Node(4))
+    sll.InsertHead(Node(4))
     sll.InsertHead(Node(1))
     sll.InsertTail(Node(5))
-    # sll.InsertHead(Node(3))
 
+    # test printing the list
+    sll.Print()  # should print 1, 4, 2, 5
+    sll.Sort() 
 
-    # # Insert node at position
-    sll.Insert(Node(3), 2)
-    sll.Insert(Node(6), 1)
-    sll.Print()
+    # test sorted insert
+    sll.SortedInsert(Node(3))
+    sll.SortedInsert(Node(0))
+    sll.SortedInsert(Node(6))
+    sll.Print()  # should print 0, 1, 2, 3, 4, 5, 6
 
+    # test insert at position
+    sll.Insert(Node(7), 7)
+    sll.Insert(Node(-1), 0)
+    sll.Print()  # should print -1, 0, 1, 2, 3, 4, 5, 6, 7
 
-    # # Sort the list
+    # test search
+    node = sll.Search(Node(3))
+    if node:
+        print("Node found:", node.data)  # should print "Node found: 3"
+    else:
+        print("Node not found")
+
+    # test delete
+    node = sll.Delete(Node(0))
+    if node:
+        print("Node deleted:", node.data)  # should print "Node deleted: 0"
+    else:
+        print("Node not found")
+    sll.Delete(Node(7))
+    sll.Delete(Node(6))
+    sll.Print()  # should print -1, 1, 2, 3, 4, 5
+
+    # test sort
+    sll.InsertHead(Node(9))
     sll.Sort()
+    sll.Print()  # should print -1, 1, 2, 3, 4, 5, 9
 
-    # # Print the list
-    sll.Print()
-
-    # # Search for a node
-    node = sll.Search(Node(4))
-    if node:
-        print("Node found:", node.data)
-    else:
-        print("Node not found")
-
-    # # Delete a node
-    node = sll.Delete(Node(3))
-    if node:
-        print("Node deleted:", node.data)
-    else:
-        print("Node not found")
-    
-
-    # # Clear the list
+    # test clear
     sll.Clear()
-    sll.Print()
+    sll.Print()  # should print "List is empty."
+
 
 if __name__ == '__main__':
     main()

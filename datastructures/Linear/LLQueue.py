@@ -77,6 +77,8 @@ class LLQueue(SinglyLL):
             current = current.next
         print()
 
+
+# TESTING THE LLQUEUE:
 def main():
     # Create a new LLQueue
     queue = LLQueue()
@@ -105,6 +107,53 @@ def main():
     # Print the queue once more
     print("Queue contents:", end=" ")
     queue.Print()
+
+    # Test the InsertHead function
+    queue.InsertHead(Node(5))
+    print("Inserting 5 at the head")
+    queue.Print()
+
+    # Test the insert function
+    queue.insert(Node(6), 3)
+    print("Inserting 6 at position 3")
+    queue.Print()
+
+    # Test the SortedInsert function
+    queue.SortedInsert(Node(0))
+    print("Inserting 0 in a sorted manner")
+    queue.Print()
+
+    # Test the Search function
+    node_to_search = Node(4)
+    search_result = queue.Search(node_to_search)
+    if search_result is not None:
+        print(f"Searching for {node_to_search.data}, Found: {search_result.data}")
+    else:
+        print(f"Node with data {node_to_search.data} not found")
+
+    # Test the Delete function
+    node_to_delete = Node(2)
+    delete_result = queue.Delete(node_to_delete)
+    if delete_result is not None:
+        print(f"Deleting {node_to_delete.data}, Deleted: {delete_result.data}")
+    else:
+        print(f"Node with data {node_to_delete.data} not found")
+
+    queue.Print()
+
+    # Test the Sort function
+    print("Sorting the list")
+    queue.Sort()
+    queue.Print()
+
+    # Test the length function
+    print(f"Length of the queue: {queue.length()}")
+
+    # Test the Clear function
+    print("Clearing the queue")
+    queue.Clear()
+    queue.Print()
+
 
 if __name__ == '__main__':
     main()

@@ -82,7 +82,9 @@ class CircularSinglyLL(SinglyLL):
     
     def Delete(self, position):
         if position < 0 or position >= self.size:
-            raise ValueError("Invalid position")
+            return print("Invalid position, node does not exist")
+        elif self.size == 1:
+            return self.DeleteHead()
         elif position == 0:
             return self.DeleteHead()
         elif position == self.size - 1:
@@ -96,6 +98,7 @@ class CircularSinglyLL(SinglyLL):
             temp.next = None
             self.size -= 1
             return temp
+
     
     def Search(self, node):
         if self.is_empty():
@@ -155,8 +158,7 @@ class CircularSinglyLL(SinglyLL):
         print()
 
 
-
-# TESTING THE CLL:
+# TESTING THE SINGLYCLL:
 def main():
     # Create a circular singly linked list with 3 nodes
     node1 = Node(1)
@@ -166,58 +168,49 @@ def main():
     cll.InsertTail(node1)
     cll.InsertTail(node2)
     cll.InsertHead(node3)
-    
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
+
+    # Print initial list information
+    print("Initial list:")
+    cll.Print()  # Expected output: 3 -> 1 -> 2 -> 3
 
     # Delete the head and tail nodes, and then print the list again
     cll.DeleteHead()
     cll.DeleteTail()
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
+    print("List after deleting head and tail nodes:")
+    cll.Print()  # Expected output: 1
 
     # Insert a new node at position 1, and then print the list again
     node4 = Node(4)
     cll.Insert(node4, 1)
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
+    print("List after inserting node at position 1:")
+    cll.Print()  # Expected output: 1 -> 4
 
-    # Sort the list and print it again
-    cll.Sort()
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
+    # Insert a new node at the head, and then print the list again
+    node5 = Node(5)
+    cll.InsertHead(node5)
+    print("List after inserting node at the head:")
+    cll.Print()  # Expected output: 5 -> 1 -> 4
 
-    # Clear the list and print it again
+    # Insert a new node at the tail, and then print the list again
+    node6 = Node(6)
+    cll.InsertTail(node6)
+    print("List after inserting node at the tail:")
+    cll.Print()  # Expected output: 5 -> 1 -> 4 -> 6
+
+    # Delete the node at position 2, and then print the list again
+    cll.Delete(2)
+    print("List after deleting node at position 2:")
+    cll.Print()  # Expected output: 5 -> 4 -> 6
+
+    # Delete a non-existing node, and then print the list again
+    cll.Delete(3)
+    print("List after deleting non-existing node:")
+    cll.Print()  # Expected output: 5 -> 4 -> 6
+
+    # Clear the list and print the final list information
     cll.Clear()
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
-
-    # Test the search function
-    cll.InsertTail(node1)
-    cll.InsertTail(node2)
-    cll.InsertTail(node3)
-    node = Node(2)
-    result = cll.Search(node)
-    if result:
-        print("Node found:", result.data)
-    else:
-        print("Node not found")
-    print("List length:", cll.length())
-    print("Sorted:", cll.is_sorted())
-    print("List content:")
-    cll.Print()
-
+    print("Final list after clearing the linked list:")
+    cll.Print()  # Expected output: Empty list
 
 if __name__ == '__main__':
     main()
-
