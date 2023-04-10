@@ -24,4 +24,4 @@
 </table>
 
 ### Percentage of work was split 50/50, with us working together in person on all sections
-### Github Repo: <a href="[https://github.com/AlexMclean42/ENSF338-W23-Assignment-2.git](https://github.com/AlexMclean42/ENSF338-DataStructures-FinalProject.git)">[https://github.com/AlexMclean42/ENSF338-W23-Assignment-2.git](https://github.com/AlexMclean42/ENSF338-DataStructures-FinalProject.git)</a>
+### Github Repo: https://github.com/AlexMclean42/ENSF338-DataStructures-FinalProject.git
