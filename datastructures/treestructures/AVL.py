@@ -24,8 +24,9 @@ class AVL(BST):
                 self.root = TNode(data=root)
             else:
                 raise TypeError("Root must be an integer or TNode object.")
+        else:
+            print("A root has already been set")
 
-    #finish?
 
     def balance(self, node):
         """
@@ -129,8 +130,10 @@ class AVL(BST):
 
 
     def Insert(self, val):
+
         super().Insert(val)
-        self.balance(self.root)
+        self.root = self.balance(self.root)
+
 
     def Delete(self, val):
         super().Delete(val)
@@ -138,70 +141,3 @@ class AVL(BST):
 
 
 
-def main():                       #Test main delete before submission
-    #node = TNode(1, TNode(2, TNode(4), TNode(5)), TNode(3, TNode(6), TNode(7)))
-    node = TNode(3)
-    ahh = BST()
-    # ahh.Insert(4)
-    # ahh.Insert(2)
-    # ahh.Insert(3)
-    ahh.Insert(1)
-    ahh.Insert(5)
-    ahh.Insert(7)
-    ahh.Insert(9)
-    
-
-
-    tree = AVL()
-    tree.set_root(ahh.root)
-
-    # Print the contents of the tree in ascending order
-    print("Contents of tree in ascending order:")
-    tree.printInOrder()
-    print()
-
-    # Print the contents of the tree in Breadth-First order
-    print("Contents of tree in Breadth-First order:")
-    tree.printBF()
-
-
-    tree.Insert(6)
-    tree.Insert(8)
-    tree.Insert(3)
-    tree.Insert(4)
-    tree.Insert(0) 
-    
-
-    print("Contents of tree in ascending order:")
-    tree.printInOrder()
-    print()
-
-    # Print the contents of the tree in Breadth-First order
-    print("Contents of tree in Breadth-First order:")
-    tree.printBF()
-
-    # a = tree.search(1)
-    # a.print_node()
-    # a = tree.search(6)
-    # a.print_node()
-    # a = tree.search(4)
-    # a.print_node()
-    # a = tree.search(9)
-    # a.print_node()
-    # a = tree.search(0)
-    # a.print_node()
-
-    #tree.Delete(7) dropped stuff on left
-
-
-    print("Contents of tree in ascending order:")
-    tree.printInOrder()
-    print()
-
-    # Print the contents of the tree in Breadth-First order
-    print("Contents of tree in Breadth-First order:")
-    tree.printBF()
-
-
-if __name__ == '__main__':
-    main()
