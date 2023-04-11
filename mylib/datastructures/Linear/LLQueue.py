@@ -1,6 +1,10 @@
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
 
-from SNode import Node
-from singlyLL import SinglyLL
+from datastructures.nodes.SNode import Node
+from datastructures.Linear.singlyLL import SinglyLL
 
 
 

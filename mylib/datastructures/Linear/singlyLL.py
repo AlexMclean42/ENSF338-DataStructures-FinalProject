@@ -1,4 +1,9 @@
-from SNode import Node
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
+from datastructures.nodes.SNode import Node
 
 
 class SinglyLL:

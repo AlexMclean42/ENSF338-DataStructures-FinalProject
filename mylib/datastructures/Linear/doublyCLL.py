@@ -1,5 +1,10 @@
-from DNode import DNode
-from doublyLL import DoublyLL
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
+from datastructures.nodes.DNode import DNode
+from datastructures.Linear.doublyLL import DoublyLL
 
 class doublyCLL(DoublyLL):
     def __init__(self):

@@ -1,5 +1,10 @@
-from SNode import Node
-from singlyLL import SinglyLL
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
+from datastructures.nodes.SNode import Node
+from datastructures.Linear.singlyLL import SinglyLL
 
 class CircularSinglyLL(SinglyLL):
     def __init__(self, node=None):
